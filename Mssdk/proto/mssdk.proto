@@ -1,0 +1,410 @@
+syntax = "proto2";
+
+package mssdk;
+
+message MssdkRequest {
+    optional uint32  u1  = 1;
+    optional uint32 u2 = 2;
+    optional uint32 u3 = 3;
+    optional bytes encrypted_payload = 4;
+    optional sint64 current_time_in_ms = 5;
+}
+
+message MssdkResponse {
+    optional uint32 u1 = 1;
+    optional uint32 u2 = 2;
+    optional uint32 u3 = 3;
+    optional uint32 u4 = 4;
+    optional uint32 u5 = 5;
+    optional bytes body = 6;
+    optional uint32 u7 = 7;
+    optional uint32 u8 = 8;
+
+}
+
+message TokenBody {
+    optional string token = 1;
+    optional sint32 status = 2;
+}
+
+message GetSeedRequestPayload {
+    optional string u1 = 1;
+    optional string did = 2;
+    optional string platform = 3;
+    optional string version = 4;
+}
+
+message GetSeedResponsePayload {
+    message UnknownType {
+        optional string u1 = 1;
+    }
+
+    optional string sec_device_id = 1;
+    optional UnknownType u2 = 2;
+}
+
+
+message GetTokenRequestPayload {
+    message UnknownType9 {
+            repeated sint32 u6 = 6;
+        }
+
+    message DeviceInfo {
+        message UnknownType7 {
+            optional fixed64 u6 = 6;
+        }
+
+        message UnknownType11 {
+            optional fixed32 u12 = 12;
+        }
+
+        optional string u1 = 1;
+        optional string device_brand = 2;
+        optional string device_model = 3;
+        optional string u4 = 4;
+        optional string os = 5;
+        optional string os_version = 6;
+        optional string resolution = 7;
+        optional sint32 dpi = 8;
+        optional string rom_version = 9;
+        optional sint64 rom_compile_UTC = 10;
+        optional string locale = 11;
+        optional string timezone_name = 12;
+        optional sint32 brightness = 13;
+        optional sint32 cur_battery = 14;
+        optional sint64 ram_total_size = 15;
+        optional sint64 internal_storage_size = 16;
+        optional sint64 sdcard_size = 17;
+        optional sint64 internal_free_size = 18;
+        optional string u19 = 19;
+        optional string u20 = 20;
+        optional string u21 = 21;
+        optional string u22 = 22;
+        optional string u23 = 23;
+        optional string drm_id = 24;
+        optional sint64 boot_time_UTC = 25;
+        optional string u26 = 26;
+        optional sint64 u27 = 27;
+        optional string u28 = 28;
+        optional sint32 u29 = 29;
+        optional sint32 u30 = 30;
+        optional string u31 = 31;
+        optional string wifi_IP = 32;
+        optional string wifi_gateway_IP = 33;
+        optional sint32 carrier_region_v2 = 36;
+        optional sint32 u37 = 37;
+        optional string u38 = 38;
+        optional string u39 = 39;
+        optional string dns_list = 40;
+        optional sint32 u41 = 41;
+        optional sint32 u42 = 42;
+        optional sint32 u43 = 43;
+        optional string u44 = 44;
+        optional sint64 data_modify = 45;
+        optional sint64 storage_change = 46;
+        optional string package_path = 47;
+        optional sint32 api_level = 48;
+        optional sint32 u49 = 49;
+        optional string u50 = 50;
+        optional sint32 u51 = 51;
+        optional sint32 u52 = 52;
+        optional string u53 = 53;
+        optional string u54 = 54;
+        optional string u55 = 55;
+        optional sint32 u56 = 56;
+    }
+
+    optional DeviceInfo device_info = 1;
+    optional string previous_token = 2;
+    optional string os = 3;
+    optional string MSSDK_version = 4;
+    optional sint32 MSSDK_version_code = 5;
+    optional string app_id = 6;
+    optional string app_version = 7;
+    optional string device_id = 8;
+    optional UnknownType9 u9 = 9;
+    optional sint32 u11 = 11;
+    optional string u12 = 12;
+    optional sint32 u16 = 16;
+}
+
+message GetTokenResponsePayload {
+    optional string token = 1;
+    optional sint32 code = 2;
+}
+
+
+message ReportRequestPayload {
+    message Inseterted {
+        optional sfixed64 u1 = 1;
+        optional sfixed64 u2 = 2;
+        optional sfixed64 u3 = 3;
+        optional sfixed64 u4 = 4;
+        optional sfixed64 u5 = 5;
+        optional sfixed64 u6 = 6;
+    }
+    message Inserted_2 {
+        optional sfixed32 u1 = 1;
+        optional sfixed32 u2 = 2;
+        optional sfixed32 u3 = 3;
+        optional sfixed32 u4 = 4;
+        optional sfixed32 u5 = 5;
+        optional sfixed32 u6 = 6;
+        optional sfixed32 u7 = 7;
+        optional sfixed32 u8 = 8;
+        optional sfixed32 u9 = 9;
+        optional sfixed32 u10 = 10;
+        optional sfixed32 u11 = 11;
+        optional sfixed32 u12 = 12;
+    }
+
+        message Inserted_3 {
+        optional sfixed32 u1 = 1;
+        optional sfixed32 u2 = 2;
+        optional sfixed32 u3 = 3;
+        optional sfixed32 u4 = 4;
+        optional sfixed32 u5 = 5;
+        repeated sint32 u6 = 6;
+    }
+    message HWInfo {
+        optional sint64 u1 = 1;
+        optional sint64 u2 = 2;
+        optional sint32 cpu_core_num = 3;
+        optional string u4 = 4;
+        optional string cpu_max_frequency = 5;
+        optional string cpu_min_frequency = 6;
+        optional sint32 u7 = 7;
+        optional sint32 u8 = 8;
+        optional string supported_commands = 9;
+        optional string u10 = 10;
+        optional string device_model = 11;
+        optional string device_board = 12;
+        optional string device_board_2 = 13;
+        optional string ro_product_name = 14;
+        optional string u15 = 15;
+        optional Inseterted inseterted = 16;
+        optional sint32 u16 = 17;
+        optional sint32 density_dpi = 18;
+        optional string u17 = 19;
+        optional sint32 u18 = 20;
+        optional sint32 cur_battery = 21;
+        optional bytes u20 = 22;
+        optional sint32 u21 = 24;
+        optional sint64 ram_total_size = 25;
+        optional sint64 internal_storage_size = 26;
+        optional sint64 internal_storage_used_ize = 27;
+        optional sint64 sdcard_size = 28;
+        optional sint64 u22 = 29;
+        optional string device_brand = 30;
+        optional string platform_board = 31;
+        optional string features = 32;
+        optional string libraries = 33;
+    }
+
+    message TiktokDevice {
+        optional string dyn_seed = 1;
+        optional string device_id = 2;
+        optional string install_id = 3;
+        optional string multi_sids = 4;
+        optional string u5 = 5;
+        optional string u6 = 6;
+        optional string u7 = 7;
+        optional string u8 = 8;
+        optional string openudid = 9;
+        optional string openudid_2 = 10;
+        optional string u11 = 11;
+        optional string u12 = 12;
+        optional string u13 = 13;
+        optional string u14 = 14;
+        optional string drm_id = 16;
+    }
+
+    message ApplicationInfo {
+        optional sint64 install_time = 1;
+        optional sint64 launch_first_time = 2;
+        optional string package = 3;
+        optional string u4 = 4;
+        optional string package_2 = 5;
+        optional string app_id = 6;
+        optional string app_version = 7;
+        optional string u8 = 8;
+        optional string u9 = 9;
+        optional string report_string = 10;
+        optional string channel = 11;
+        optional string MSSDK_version = 12;
+        optional string region_type = 13;
+        optional string u14 = 14;
+        optional string u15 = 15;
+        optional sint32 u18 = 18;
+        optional sint32 u19 = 19;
+        optional sint32 u20 = 20;
+        optional sint32 u21 = 21;
+        optional sint32 u22 = 22;
+        optional sint32 u23 = 23;
+        optional sint32 u24 = 24;
+    }
+
+    message ExtraDeviceInfo {
+        optional string fingerprint = 1;
+        optional string timezone_name = 2;
+        optional Inserted_2 inserted_2 = 3;
+        optional string os_version = 4;
+        optional string platform = 5;
+        optional string u6 = 6;
+        optional string u7 = 7;
+        optional string arch = 8;
+        optional sint32 u9 = 9;
+        optional sint32 u10 = 10;
+        optional sint32 u11 = 11;
+        optional sint32 api_level = 12;
+        optional sint32 u13 = 13;
+        optional sint32 u14 = 14;
+        optional sint32 u15 = 15;
+        optional string u16 = 16;
+        optional sint64 libc_hash = 17;
+        optional sint64 app_start_time = 18;
+    }
+
+    message UnknownType5 {
+        optional sint32 u1 = 1;
+        repeated string u2 = 2;
+        repeated string u3 = 3;
+        optional sint32 u4 = 4;
+        optional string u5 = 5;
+        optional sint32 u6 = 6;
+    }
+
+    message NetworkInfo {
+        optional string u1 = 1;
+        optional string u2 = 2;
+        optional string wifi_ip = 3;
+        optional string u4 = 4;
+        optional string u5 = 5;
+        optional string u6 = 6;
+        optional sint32 u7 = 7;
+        optional string u8 = 8;
+        repeated string dns_list = 9;
+        optional sint32 u10 = 10;
+        optional string u11 = 11;
+        optional string u12 = 12;
+        optional string u13 = 13;
+    }
+
+    message AndroidBuildInfo {
+        optional string u1 = 1;
+        optional sint32 u2 = 2;
+        optional sint32 u3 = 3;
+        optional sint32 u4 = 4;
+        optional string u5 = 5;
+        optional string u6 = 6;
+        optional string u7 = 7;
+        optional sint32 u8 = 8;
+        optional sint32 u9 = 9;
+        optional string u10 = 10;
+        optional sint32 u11 = 11;
+        optional sint32 u12 = 12;
+        optional sint32 u13 = 13;
+        optional string u14 = 14;
+        optional string sha1_sig_hash = 15;
+        optional sint32 u16 = 16;
+        optional sint32 u17 = 17;
+        optional sint32 u18 = 18;
+        optional sint32 u19 = 19;
+        optional sint32 u20 = 20;
+        optional sint32 u21 = 21;
+        optional string u23 = 23;
+        optional string u24 = 24;
+        optional string u25 = 25;
+        optional string u26 = 26;
+        optional sint32 u27 = 27;
+        optional string u28 = 28;
+        optional string u29 = 29;
+        optional string u30 = 30;
+        optional sint32 u31 = 31;
+        optional string u32 = 32;
+        optional sint32 u33 = 33;
+        optional string u34 = 34;
+        optional sint32 u35 = 35;
+        optional string u36 = 36;
+        optional string device_brand = 37;
+        optional string ro_build_tags = 38;
+        optional string rom = 39;
+        optional string ro_desc = 40;
+        optional sint32 u41 = 41;
+        optional sint32 u42 = 42;
+        optional string u43 = 43;
+        optional string u44 = 44;
+        optional string u45 = 45;
+        optional sint32 u46 = 46;
+        repeated string property = 47;
+        optional string u48 = 48;
+        optional sint32 u49 = 49;
+        optional sint32 u50 = 50;
+        optional sint32 u51 = 51;
+        optional string u52 = 52;
+        optional sint32 u53 = 53;
+        optional sint32 u54 = 54;
+        optional sint32 u55 = 55;
+        optional string u56 = 56;
+        optional sint32 u57 = 57;
+        optional sint32 u58 = 58;
+        optional sint32 u59 = 59;
+    }
+
+    message UnknownType9 {
+        optional string u1 = 1;
+        optional string u2 = 2;
+        optional string u3 = 3;
+        optional bytes u4 = 4;
+    }
+
+    message UnknownType10 {
+        optional string apk_info = 1;
+        optional string u2 = 2;
+        optional sint32 u3 = 3;
+        optional string u4 = 4;
+        optional Inserted_3 inserted_3 = 5;
+        optional sint32 u6 = 6;
+        optional sint32 u7 = 7;
+        optional string u8 = 8;
+    }
+
+    message UnknownType13 {
+        optional bytes u1 = 1;
+        optional string u2 = 2;
+        optional string u3 = 3;
+        optional string u4 = 4;
+        optional string u5 = 5;
+        optional string u6 = 6;
+        optional string u7 = 7;
+        optional string u8 = 8;
+        optional string u9 = 9;
+        optional string u10 = 10;
+    }
+
+    message UnknownType14 {
+        optional sint32 u1 = 1;
+        optional sint32 u2 = 2;
+        optional string u3 = 3;
+        optional string u4 = 4;
+        optional string u5 = 5;
+        optional sint32 u6 = 6;
+        optional sint32 u7 = 7;
+        optional string u8 = 8;
+        optional string u9 = 9;
+    }
+    optional sint64 current_time = 1;
+    optional HWInfo device_info = 2;
+    optional TiktokDevice tiktok_device = 3;
+    optional ApplicationInfo app_info = 4;
+    optional UnknownType5 u5 = 5;
+    optional ExtraDeviceInfo ex_device_info = 6;
+    optional NetworkInfo network_info = 7;
+    optional AndroidBuildInfo build_info = 8;
+    optional UnknownType9 u9 = 9;
+    optional UnknownType10 u10 = 10;
+    optional string u11 = 11;
+    optional string u12 = 12;
+    optional UnknownType13 u13 = 13;
+    optional UnknownType14 u14 = 14;
+}
